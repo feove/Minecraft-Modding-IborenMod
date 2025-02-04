@@ -1,5 +1,19 @@
 {
-  "item.iboren.ibo" : "Ibo",
   "itemGroup.iborenTab": "Iboren Items",
-  "block.iboren.ibo_ore" : "Ibo Ores"
+  "itemGroup.iborenToolsTab": "Iboren Equipments",
+
+  "item.iboren.ibo" : "Ibo",
+  "item.iboren.ren" : "Ren",
+  "item.iboren.ren_sword" : "Ren Sword",
+  "item.iboren.ren_pickaxe" : "Ren Pickaxe",
+  "item.iboren.ren_axe" : "Ren axe",
+  "item.iboren.ren_shovel" : "Ren Shovel",
+
+  "item.iboren.ibo_sword" : "Ibo Sword",
+
+  "block.iboren.ibo_ore" : "Ibo Ore",
+  "block.iboren.ren_ore" : "Ren Ore",
+
+  "block.iboren.ren_block" : "Ren Block",
+  "block.iboren.ibo_block" : "Ibo Block"
 }

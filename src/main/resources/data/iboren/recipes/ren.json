@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "iboren:ren_block"
+    }
+  ],
+  "result": {
+    "item": "iboren:ren",
+    "count": 9
+  }
+}

@@ -15,4 +15,13 @@ public class ModItemGroup {
             return new ItemStack(ModItems.IBO.get());
         }
     };
+
+    public static final ItemGroup IBOREN_TOOLS = new ItemGroup("iborenToolsTab") {
+
+        @Override
+        public ItemStack makeIcon() {
+
+            return new ItemStack(ModItems.REN_SWORD.get());
+        }
+    };
 }
