@@ -1,11 +1,12 @@
 package com.feove.iboren.block;
 
 import com.feove.iboren.IborenMod;
+import com.feove.iboren.block.custom.CraftingTable;
 import com.feove.iboren.item.ModItemGroup;
 import com.feove.iboren.item.ModItems;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
+import net.minecraft.block.CraftingTableBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -16,7 +17,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.Supplier;
-import java.util.function.ToIntFunction;
 
 public class ModBlocks {
 
@@ -59,6 +59,13 @@ public class ModBlocks {
                     .strength(2,4)
                     .requiresCorrectToolForDrops()
             ));
+
+    public static final RegistryObject<Block> IBOREN_CRAFTING_TABLE =
+            registerBlock("iboren_crafting_table", () ->
+                    new CraftingTable(AbstractBlock.Properties.of(Material.METAL)
+                    .harvestLevel(2)
+            ));
+
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
 

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RBR",
+    "ICI",
+    "WWW"
+  ],
+  "key": {
+    "W": {"item": "minecraft:dark_oak_log"},
+    "B": {"item": "iboren:ibo_block"},
+    "I": {"item": "iboren:ibo"},
+    "C": {"item": "minecraft:crafting_table"},
+    "R": {"item": "iboren:ren"}
+  },
+  "result": {
+    "item": "iboren:iboren_crafting_table"
+  }
+}

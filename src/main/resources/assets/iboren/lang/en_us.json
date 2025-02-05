@@ -19,5 +19,7 @@
   "block.iboren.ren_ore" : "Ren Ore",
 
   "block.iboren.ren_block" : "Ren Block",
-  "block.iboren.ibo_block" : "Ibo Block"
+  "block.iboren.ibo_block" : "Ibo Block",
+
+  "block.iboren.iboren_crafting_table" : "Iboren Crafting Table"
 }

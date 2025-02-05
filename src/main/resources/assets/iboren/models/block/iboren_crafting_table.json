@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "iboren:block/iboren_crafting_table_front",
+    "north": "iboren:block/iboren_crafting_table_front",
+    "south": "iboren:block/iboren_crafting_table_side",
+    "east": "iboren:block/iboren_crafting_table_side",
+    "west": "iboren:block/iboren_crafting_table_front",
+    "up": "iboren:block/iboren_crafting_table_top",
+    "down": "iboren:block/iboren_crafting_table_floor"
+  }
+}

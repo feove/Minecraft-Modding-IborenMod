@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "iboren:block/iboren_crafting_table"
+    }
+  }
+}
