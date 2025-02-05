@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " XX",
+    " SX",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "iboren:ibo"
+    },
+    "S": {
+      "item": "minecraft:iron_axe"
+    }
+  },
+  "result": {
+    "item": "iboren:ibo_axe"
+  }
+}

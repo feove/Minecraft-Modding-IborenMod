@@ -52,9 +52,22 @@ public class ModItems {
             ));
 
     public static final RegistryObject<Item> IBO_SWORD = ITEMS.register("ibo_sword",
-            () -> new SwordItem(ModItemTier.IBO_SWORD, 1, 3f,
+            () -> new SwordItem(ModItemTier.IBO_SWORD, 1, 1f,
                     new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)
+            ));
 
+    public static final RegistryObject<Item> IBO_PICKAXE = ITEMS.register("ibo_pickaxe",
+            () -> new PickaxeItem(ModItemTier.IBO_PICKAXE, 1, 1f,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)
+            ));
+
+    public static final RegistryObject<Item> IBO_AXE = ITEMS.register("ibo_axe",
+            () -> new AxeItem(ModItemTier.IBO_AXE, 1, 1f,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)
+            ));
+    public static final RegistryObject<Item> IBO_SHOVEL = ITEMS.register("ibo_shovel",
+            () -> new ShovelItem(ModItemTier.IBO_SHOVEL, 1, 1f,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)
             ));
 
     public static void register(IEventBus eventBus) {

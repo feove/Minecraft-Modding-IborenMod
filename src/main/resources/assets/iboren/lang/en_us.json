@@ -4,12 +4,16 @@
 
   "item.iboren.ibo" : "Ibo",
   "item.iboren.ren" : "Ren",
+
   "item.iboren.ren_sword" : "Ren Sword",
   "item.iboren.ren_pickaxe" : "Ren Pickaxe",
   "item.iboren.ren_axe" : "Ren axe",
   "item.iboren.ren_shovel" : "Ren Shovel",
 
   "item.iboren.ibo_sword" : "Ibo Sword",
+  "item.iboren.ibo_pickaxe" : "Ibo Pickaxe",
+  "item.iboren.ibo_axe" : "Ibo Axe",
+  "item.iboren.ibo_shovel" : "Ibo Shovel",
 
   "block.iboren.ibo_ore" : "Ibo Ore",
   "block.iboren.ren_ore" : "Ren Ore",

@@ -13,7 +13,10 @@ public enum ModItemTier implements IItemTier {
     REN_PICKAXE(3,150,4f,4f,10,ModItems.REN_PICKAXE),
     REN_AXE(3,150,4f,5f,10,ModItems.REN_AXE),
     REN_SHOVEL(3,150,4f,2f,10,ModItems.REN_SHOVEL),
-    IBO_SWORD(2,100,3f,8f,10,ModItems.IBO_SWORD);
+    IBO_SWORD(2,100,3f,8f,10,ModItems.IBO_SWORD),
+    IBO_PICKAXE(2,100,3f,3f,10,ModItems.IBO_SWORD),
+    IBO_AXE(2,100,3f,4f,10,ModItems.IBO_SWORD),
+    IBO_SHOVEL(2,100,3f,2f,10,ModItems.IBO_SWORD);
 
     private final LazyValue<Ingredient> repairMaterial;
 
