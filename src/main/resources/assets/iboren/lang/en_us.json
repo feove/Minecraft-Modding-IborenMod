@@ -15,6 +15,16 @@
   "item.iboren.ibo_axe" : "Ibo Axe",
   "item.iboren.ibo_shovel" : "Ibo Shovel",
 
+  "item.iboren.ibo_helmet" : "Ibo Helmet",
+  "item.iboren.ibo_chestplate" : "Ibo Chestplate",
+  "item.iboren.ibo_leggings" : "Ibo Leggings",
+  "item.iboren.ibo_boots" : "Ibo Boots",
+
+  "item.Renren.ren_boots" : "Ren Boots",
+  "item.Renren.ren_helmet" : "Ren Helmet",
+  "item.Renren.ren_chestplate" : "Ren Chestplate",
+  "item.Renren.ren_leggings" : "Ren Leggings",
+
   "block.iboren.ibo_ore" : "Ibo Ore",
   "block.iboren.ren_ore" : "Ren Ore",
 

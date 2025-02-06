@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "XXX",
+    "XDX",
     " S ",
     " # "
   ],
@@ -14,6 +14,9 @@
     },
     "S": {
       "item": "iboren:ibo_pickaxe"
+    },
+    "D": {
+      "item": "minecraft:diamond"
     }
   },
   "result": {

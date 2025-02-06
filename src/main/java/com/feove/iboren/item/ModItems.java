@@ -1,6 +1,7 @@
 package com.feove.iboren.item;
 
 import com.feove.iboren.IborenMod;
+import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
@@ -69,6 +70,39 @@ public class ModItems {
             () -> new ShovelItem(ModItemTier.IBO_SHOVEL, 1, 1f,
                     new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)
             ));
+
+    public static final RegistryObject<Item> IBO_BOOTS = ITEMS.register("ibo_boots",
+            () -> new ArmorItem(ModArmorMaterial.IBO, EquipmentSlotType.FEET,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
+    public static final RegistryObject<Item> IBO_HELMET = ITEMS.register("ibo_helmet",
+            () -> new ArmorItem(ModArmorMaterial.IBO, EquipmentSlotType.HEAD,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
+    public static final RegistryObject<Item> IBO_CHESTPLATE = ITEMS.register("ibo_chestplate",
+            () -> new ArmorItem(ModArmorMaterial.IBO, EquipmentSlotType.CHEST,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
+    public static final RegistryObject<Item> IBO_LEGGINGS = ITEMS.register("ibo_leggings",
+            () -> new ArmorItem(ModArmorMaterial.IBO, EquipmentSlotType.LEGS,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
+    public static final RegistryObject<Item> REN_BOOTS = ITEMS.register("ren_boots",
+            () -> new ArmorItem(ModArmorMaterial.REN, EquipmentSlotType.FEET,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
+    public static final RegistryObject<Item> REN_HELMET = ITEMS.register("ren_helmet",
+            () -> new ArmorItem(ModArmorMaterial.REN, EquipmentSlotType.HEAD,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
+    public static final RegistryObject<Item> REN_CHESTPLATE = ITEMS.register("ren_chestplate",
+            () -> new ArmorItem(ModArmorMaterial.REN, EquipmentSlotType.CHEST,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
+    public static final RegistryObject<Item> RENçLEGGINGS = ITEMS.register("ren_leggings",
+            () -> new ArmorItem(ModArmorMaterial.REN, EquipmentSlotType.LEGS,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
