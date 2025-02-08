@@ -38,7 +38,6 @@ public enum ModItemTier implements IItemTier {
         this.repairMaterial = new LazyValue<>(() -> Ingredient.of(repairMaterialSupplier.get()));
     }
 
-
     @Override
     public int getUses() {
         return maxUses;

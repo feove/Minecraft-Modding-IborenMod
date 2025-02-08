@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "D D",
+    "B B",
+    "I I"
+  ],
+  "key": {
+    "I": {
+      "item": "iboren:ibo_boots"
+    },
+    "B": {
+      "item": "iboren:ren_block"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "iboren:ren_boots"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XHX",
+    "X X",
+    "   "
+  ],
+  "key": {
+    "X": {
+      "item": "iboren:ibo"
+    },
+    "H": {
+      "item": "minecraft:iron_helmet"
+    }
+  },
+  "result": {
+    "item": "iboren:ibo_helmet"
+  }
+}

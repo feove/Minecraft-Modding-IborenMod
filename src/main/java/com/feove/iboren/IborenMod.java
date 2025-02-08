@@ -2,8 +2,11 @@ package com.feove.iboren;
 
 import com.feove.iboren.block.ModBlocks;
 import com.feove.iboren.item.ModItems;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -30,12 +33,16 @@ public class IborenMod
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
 
+
+
     public IborenMod() {
+
 
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.ITEMS.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
+
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::enqueueIMC);
@@ -54,8 +61,8 @@ public class IborenMod
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
-        // do something that can only be done on the client
-        LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
+
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

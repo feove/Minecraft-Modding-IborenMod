@@ -20,10 +20,10 @@
   "item.iboren.ibo_leggings" : "Ibo Leggings",
   "item.iboren.ibo_boots" : "Ibo Boots",
 
-  "item.Renren.ren_boots" : "Ren Boots",
-  "item.Renren.ren_helmet" : "Ren Helmet",
-  "item.Renren.ren_chestplate" : "Ren Chestplate",
-  "item.Renren.ren_leggings" : "Ren Leggings",
+  "item.iboren.ren_boots" : "Ren Boots",
+  "item.iboren.ren_helmet" : "Ren Helmet",
+  "item.iboren.ren_chestplate" : "Ren Chestplate",
+  "item.iboren.ren_leggings" : "Ren Leggings",
 
   "block.iboren.ibo_ore" : "Ibo Ore",
   "block.iboren.ren_ore" : "Ren Ore",

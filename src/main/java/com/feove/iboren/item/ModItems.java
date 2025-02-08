@@ -99,7 +99,7 @@ public class ModItems {
             () -> new ArmorItem(ModArmorMaterial.REN, EquipmentSlotType.CHEST,
                     new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
 
-    public static final RegistryObject<Item> RENçLEGGINGS = ITEMS.register("ren_leggings",
+    public static final RegistryObject<Item> REN_LEGGINGS = ITEMS.register("ren_leggings",
             () -> new ArmorItem(ModArmorMaterial.REN, EquipmentSlotType.LEGS,
                     new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
 

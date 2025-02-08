@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BHB",
+    "D D",
+    "   "
+  ],
+  "key": {
+    "H": {
+      "item": "iboren:ibo_helmet"
+    },
+    "B": {
+      "item": "iboren:ren_block"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "iboren:ren_helmet"
+  }
+}

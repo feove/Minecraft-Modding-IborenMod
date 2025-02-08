@@ -4,9 +4,7 @@ import com.feove.iboren.IborenMod;
 import com.feove.iboren.block.custom.CraftingTable;
 import com.feove.iboren.item.ModItemGroup;
 import com.feove.iboren.item.ModItems;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.CraftingTableBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -74,7 +72,7 @@ public class ModBlocks {
         return toReturn;
     }
 
-   private static <T extends Block> void registerBlockItem(String name, Supplier<T> block) {
+    private static <T extends Block> void registerBlockItem(String name, Supplier<T> block) {
        ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),new Item.Properties().tab(ModItemGroup.IBOREN_GROUP)));
     }
 

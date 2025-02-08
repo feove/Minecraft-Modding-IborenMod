@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XLX",
+    "B B",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "iboren:ibo"
+    },
+    "B": {
+      "item": "iboren:ibo_block"
+    },
+    "L": {
+      "item": "minecraft:iron_leggings"
+    }
+  },
+  "result": {
+    "item": "iboren:ibo_leggings"
+  }
+}

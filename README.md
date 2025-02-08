@@ -8,7 +8,7 @@ Welcome to the Iboren Minecraft Mod repository! This mod adds new items and bloc
 
 - **New Textures:** Ibo and Ren Blocks
 - **New Armours:** Ren/Ibo
-- **New Recipes** Ren/Ibo stuffs
+- **New Recipes** Ren/Ibo Armours
 
 - Custom Item Group for better organization in the creative inventory
 
@@ -16,7 +16,7 @@ Welcome to the Iboren Minecraft Mod repository! This mod adds new items and bloc
 
 To use the Iboren Mod in your Minecraft game:
 
-1. Download the `iborenMod-1.4.jar` file from the [releases section](#).
+1. Download the `iborenMod-1.5.jar` file from the [releases section](#).
 2. Place it in your `mods/` folder within your Minecraft directory.
 3. Launch Minecraft using the Forge profile that matches the mod's version (1.16.5).
 
@@ -28,7 +28,7 @@ To use the Iboren Mod in your Minecraft game:
   
 ### Steps:
 1. Install Minecraft Forge (if not already installed).
-2. Copy the `iborenMod-1.4.jar` to your `mods/` folder.
+2. Copy the `iborenMod-1.5.jar` to your `mods/` folder.
 3. Launch Minecraft!
 
 ## How to Build

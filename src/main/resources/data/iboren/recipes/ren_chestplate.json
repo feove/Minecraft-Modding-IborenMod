@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "BCB",
+    "XBX"
+  ],
+  "key": {
+    "X": {
+      "item": "iboren:ren"
+    },
+    "B": {
+      "item": "iboren:ren_block"
+    },
+    "C": {
+      "item": "iboren:ibo_chestplate"
+    }
+  },
+  "result": {
+    "item": "iboren:ren_chestplate"
+  }
+}
