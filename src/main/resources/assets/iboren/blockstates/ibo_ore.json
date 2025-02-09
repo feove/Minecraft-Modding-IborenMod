@@ -1,7 +1,5 @@
 {
   "variants": {
-    "": {
-      "model": "iboren:block/ibo_ore"
-    }
+    "": { "model": "iboren:block/ibo_ore" }
   }
 }

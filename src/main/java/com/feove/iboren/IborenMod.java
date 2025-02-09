@@ -3,6 +3,7 @@ package com.feove.iboren;
 import com.feove.iboren.block.ModBlocks;
 import com.feove.iboren.item.ModItems;
 
+import com.feove.iboren.world.ModWorldEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.RenderType;
@@ -40,6 +41,8 @@ public class IborenMod
 
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        MinecraftForge.EVENT_BUS.register(ModWorldEvents.class);
+
         ModItems.ITEMS.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
 
@@ -49,13 +52,13 @@ public class IborenMod
         eventBus.addListener(this::processIMC);
         eventBus.addListener(this::doClientStuff);
 
-        // Register ourselves for server and other game events we are interested in
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
+
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }

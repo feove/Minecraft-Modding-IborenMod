@@ -11,8 +11,9 @@ public class ModWorldEvents {
     @SubscribeEvent
     public static void biomeLoad(BiomeLoadingEvent event) {
 
-        Biome.Category biome = event.getCategory();
+
         ModOreGeneration.generateOres(event);
     }
+
 
 }

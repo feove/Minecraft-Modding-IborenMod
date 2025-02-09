@@ -1,32 +1,28 @@
 package com.feove.iboren.world.gen;
 
-
 import com.feove.iboren.block.ModBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraftforge.common.util.Lazy;
+import net.minecraft.world.gen.feature.OreFeatureConfig;
+import net.minecraftforge.fml.RegistryObject;
 
 public enum OreType {
 
-    IBO(Lazy.of(ModBlocks.IBO_ORE).get(),8,24,50)
-    ;
+    IBO_ORE(ModBlocks.IBO_ORE, 9, 0, 64); // You can add more ores as needed
 
-    private final Lazy<Block> block;
+    private final RegistryObject<Block> block;
     private final int maxVeinSize;
     private final int minHeight;
     private final int maxHeight;
 
-    OreType(Block block, int maxVeinSize, int minHeight, int maxHeight) {
-
-        this.block = (Lazy<Block>) block;
+    OreType(RegistryObject<Block> block, int maxVeinSize, int minHeight, int maxHeight) {
+        this.block = block;
         this.maxVeinSize = maxVeinSize;
         this.minHeight = minHeight;
         this.maxHeight = maxHeight;
-
     }
 
-    public Block getBlock() {
-        return block.get();
+    public RegistryObject<Block> getBlock() {
+        return block;
     }
 
     public int getMaxVeinSize() {
@@ -40,13 +36,4 @@ public enum OreType {
     public int getMaxHeight() {
         return maxHeight;
     }
-
-    public static OreType get(Block block) {
-
-        for (OreType ore : OreType.values()) {
-            if (ore.getBlock() == block) return ore;
-        }
-        return null;
-    }
-
 }
