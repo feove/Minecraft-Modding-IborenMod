@@ -45,6 +45,6 @@ If you'd like to contribute to this mod, feel free to fork this repository, crea
 
 This mod is licensed under the MIT License. See the `LICENSE` file for more information.
 
-## Contact
+## Screenshots
 
-- Discord : https://discord.com/users/640955460341727232
+![ScreenShot](screenshots/equiments_tab.png)
