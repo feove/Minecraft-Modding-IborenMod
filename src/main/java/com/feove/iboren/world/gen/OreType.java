@@ -7,8 +7,8 @@ import net.minecraftforge.fml.RegistryObject;
 
 public enum OreType {
 
-    IBO_ORE(ModBlocks.IBO_ORE, 3, 0, 20),
-    REN_ORE(ModBlocks.REN_ORE,1,0,20);
+    IBO_ORE(ModBlocks.IBO_ORE, 5, 0, 20),
+    REN_ORE(ModBlocks.REN_ORE,3,0,20);
 
     private final RegistryObject<Block> block;
     private final int maxVeinSize;

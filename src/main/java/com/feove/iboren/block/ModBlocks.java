@@ -1,11 +1,13 @@
 package com.feove.iboren.block;
 
 import com.feove.iboren.IborenMod;
-import com.feove.iboren.block.custom.CraftingTable;
+import com.feove.iboren.block.custom.IborenCraftingTable;
 import com.feove.iboren.item.ModItemGroup;
 import com.feove.iboren.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.container.Container;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.ToolType;
@@ -49,9 +51,10 @@ public class ModBlocks {
                     .strength(2, 4)
                     .requiresCorrectToolForDrops()));
 
+
     public static final RegistryObject<Block> IBOREN_CRAFTING_TABLE = registerBlock("iboren_crafting_table", () ->
-            new CraftingTable(AbstractBlock.Properties.of(Material.METAL)
-                    .harvestLevel(2)));
+            new IborenCraftingTable(AbstractBlock.Properties.of(Material.METAL)
+                            .harvestLevel(2)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

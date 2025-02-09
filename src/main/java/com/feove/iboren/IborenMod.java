@@ -42,6 +42,7 @@ public class IborenMod
 
         MinecraftForge.EVENT_BUS.register(ModWorldEvents.class);
 
+
         ModItems.ITEMS.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
 
