@@ -47,4 +47,4 @@ This mod is licensed under the MIT License. See the `LICENSE` file for more info
 
 ## Screenshots
 
-![ScreenShot](screenshots/equiments_tab.png)
+![ScreenShot](screenshots/tab_equiments.png)
