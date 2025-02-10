@@ -1,6 +1,8 @@
 package com.feove.iboren;
 
 import com.feove.iboren.block.ModBlocks;
+import com.feove.iboren.entity.EntityRegistry;
+
 import com.feove.iboren.item.ModItems;
 
 import com.feove.iboren.world.ModWorldEvents;
@@ -8,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.entity.MobEntity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -45,7 +48,7 @@ public class IborenMod
 
         ModItems.ITEMS.register(eventBus);
         ModBlocks.BLOCKS.register(eventBus);
-
+        EntityRegistry.ENTITY_TYPES.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::enqueueIMC);
@@ -56,12 +59,11 @@ public class IborenMod
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
-
+    private void setup(final FMLCommonSetupEvent event) {
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
+
 
     private void doClientStuff(final FMLClientSetupEvent event) {
 

@@ -31,5 +31,7 @@
   "block.iboren.ren_block" : "Ren Block",
   "block.iboren.ibo_block" : "Ibo Block",
 
-  "block.iboren.iboren_crafting_table" : "Iboren Crafting Table"
+  "block.iboren.iboren_crafting_table" : "Iboren Crafting Table",
+
+  "item.ibore.custom_cow_spawn_egg" : "Custom Cow Egg"
 }

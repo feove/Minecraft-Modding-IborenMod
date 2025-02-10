@@ -1,6 +1,7 @@
 package com.feove.iboren.item;
 
 import com.feove.iboren.IborenMod;
+import com.feove.iboren.entity.EntityRegistry;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -102,6 +103,7 @@ public class ModItems {
     public static final RegistryObject<Item> REN_LEGGINGS = ITEMS.register("ren_leggings",
             () -> new ArmorItem(ModArmorMaterial.REN, EquipmentSlotType.LEGS,
                     new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
 
 
     public static void register(IEventBus eventBus) {

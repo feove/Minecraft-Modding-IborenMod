@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:entity/cow",
+  "textures": {
+    "layer0": "iboren:textures/entity/custom_cow/custom_cow"
+  }
+}
