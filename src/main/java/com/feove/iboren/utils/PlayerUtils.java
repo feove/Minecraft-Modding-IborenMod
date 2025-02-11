@@ -13,6 +13,11 @@ public class PlayerUtils extends Thread {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PlayerUtils.class);
 
+    private static PlayerUtils instance;
+
+    public PlayerEntity player = null;
+
+
     public static void sendMessage(PlayerEntity player, String message) {
 
         player.sendMessage(new StringTextComponent(message), player.getUUID());

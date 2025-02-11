@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -18,6 +19,7 @@ import javax.rmi.CORBA.Util;
 
 
 public class EntityRegistry {
+
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITIES, IborenMod.MOD_ID);
 
@@ -25,21 +27,13 @@ public class EntityRegistry {
             ENTITY_TYPES.register("custom_cow",
                     () -> EntityType.Builder.of(CustomCow::new, EntityClassification.CREATURE)
                             .sized(1.0F, 1.4F)
-                            .build("custom_cow")
+                            .build(new ResourceLocation(IborenMod.MOD_ID, "custom_cow").toString())
             );
+
 
     public static void register(IEventBus eventBus) {
 
         ENTITY_TYPES.register(eventBus);
-    }
-
-    public static void registerAttributes() {
-        GlobalEntityTypeAttributes.put(CUSTOM_COW.get(),
-                MobEntity.createMobAttributes()
-                        .add(Attributes.MAX_HEALTH, 10.0D)
-                        .add(Attributes.MOVEMENT_SPEED, 0.2D)
-                        .build()
-        );
     }
 
 }

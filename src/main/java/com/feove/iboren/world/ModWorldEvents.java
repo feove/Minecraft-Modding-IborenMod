@@ -2,6 +2,7 @@ package com.feove.iboren.world;
 
 
 import com.feove.iboren.entity.EntityRegistry;
+import com.feove.iboren.world.gen.ModEntityGeneration;
 import com.feove.iboren.world.gen.ModOreGeneration;
 
 import net.minecraft.world.biome.Biome;
@@ -16,7 +17,7 @@ public class ModWorldEvents {
     public static void biomeLoad(BiomeLoadingEvent event) {
 
         ModOreGeneration.generateOres(event);
-
+        ModEntityGeneration.onEntitySpawn(event);
     }
 
 

@@ -1,8 +1,10 @@
     package com.feove.iboren;
 
     import com.feove.iboren.block.ModBlocks;
+    import com.feove.iboren.client.render.CustomCowRenderer;
     import com.feove.iboren.entity.EntityRegistry;
 
+    import com.feove.iboren.entity.custom.CustomCow;
     import com.feove.iboren.item.ModItems;
 
     import com.feove.iboren.world.ModWorldEvents;
@@ -10,7 +12,10 @@
     import net.minecraft.block.Blocks;
     import net.minecraft.client.renderer.RenderType;
     import net.minecraft.client.renderer.RenderTypeLookup;
+    import net.minecraft.entity.EntitySpawnPlacementRegistry;
     import net.minecraft.entity.MobEntity;
+    import net.minecraft.entity.passive.AnimalEntity;
+    import net.minecraft.world.gen.Heightmap;
     import net.minecraftforge.common.MinecraftForge;
     import net.minecraftforge.event.RegistryEvent;
     import net.minecraftforge.eventbus.api.IEventBus;
@@ -39,7 +44,6 @@
 
         public IborenMod() {
 
-
             IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
             MinecraftForge.EVENT_BUS.register(ModWorldEvents.class);
@@ -53,19 +57,26 @@
             eventBus.addListener(this::processIMC);
             eventBus.addListener(this::doClientStuff);
 
-
             MinecraftForge.EVENT_BUS.register(this);
         }
 
         private void setup(final FMLCommonSetupEvent event) {
-            event.enqueueWork(EntityRegistry::registerAttributes);
+
+
+            event.enqueueWork(() -> {
+
+                EntitySpawnPlacementRegistry.register(EntityRegistry.CUSTOM_COW.get(),EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
+                        Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::checkAnimalSpawnRules);
+
+            });
+
+
             LOGGER.info("HELLO FROM PREINIT");
             LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
         }
 
 
         private void doClientStuff(final FMLClientSetupEvent event) {
-
 
         }
 

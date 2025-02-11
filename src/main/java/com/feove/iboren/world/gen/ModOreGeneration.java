@@ -32,7 +32,6 @@ public class ModOreGeneration {
             // Add ore feature to generation
             event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, oreFeature);
 
-
         }
     }
 }
