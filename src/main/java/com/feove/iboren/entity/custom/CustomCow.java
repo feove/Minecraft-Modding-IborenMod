@@ -29,7 +29,6 @@ public class CustomCow extends AnimalEntity {
         return stack.getItem().isEdible(); // Example food behavior
     }
 
-    @Nullable
     @Override
     public AgeableEntity getBreedOffspring(ServerWorld serverWorld, AgeableEntity mate) {
         return EntityRegistry.CUSTOM_COW.get().create(serverWorld);
