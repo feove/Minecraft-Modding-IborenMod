@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:zombie",
+  "textures": {
+    "layer0": "iboren:textures/entity/ren_zombie/ren_zombie.png"
+  }
+}

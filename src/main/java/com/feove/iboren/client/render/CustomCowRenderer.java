@@ -21,7 +21,6 @@ public class CustomCowRenderer extends MobRenderer<CustomCow, CowModel<CustomCow
 
     }
 
-
     @Override
     public ResourceLocation getTextureLocation(CustomCow entity) {
 

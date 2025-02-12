@@ -2,6 +2,7 @@ package com.feove.iboren.entity;
 
 import com.feove.iboren.IborenMod;
 import com.feove.iboren.entity.custom.CustomCow;
+import com.feove.iboren.entity.custom.RenZombie;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
@@ -28,6 +29,13 @@ public class EntityRegistry {
                     () -> EntityType.Builder.of(CustomCow::new, EntityClassification.CREATURE)
                             .sized(1.0F, 1.4F)
                             .build(new ResourceLocation(IborenMod.MOD_ID, "custom_cow").toString())
+            );
+
+    public static final RegistryObject<EntityType<RenZombie>> REN_ZOMBIE =
+            ENTITY_TYPES.register("ren_zombie",
+            () -> EntityType.Builder.of(RenZombie::new, EntityClassification.MONSTER)
+                    .sized(0.6F, 1.95F)
+                    .build(new ResourceLocation(IborenMod.MOD_ID, "ren_zombie").toString())
             );
 
 

@@ -39,8 +39,6 @@ public class CustomCow extends CowEntity {
         return MobEntity.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.2D)
-                .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE,0.5D)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
                 .add(Attributes.FOLLOW_RANGE,20);
     }
 

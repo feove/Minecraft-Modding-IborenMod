@@ -6,9 +6,7 @@ import net.minecraft.util.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.MobSpawnInfo;
-import net.minecraftforge.common.world.MobSpawnInfoBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
-
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +15,10 @@ public class ModEntityGeneration {
     public static void onEntitySpawn(final BiomeLoadingEvent event) {
 
         addEntityToAllBiomesExceptThese(event, EntityRegistry.CUSTOM_COW.get(),
-                50, 4, 12, Biomes.PLAINS, Biomes.BIRCH_FOREST);
+                50, 4, 8, Biomes.PLAINS, Biomes.BIRCH_FOREST);
+
+        addEntityToAllBiomesExceptThese(event,EntityRegistry.REN_ZOMBIE.get(),
+                100,5,20,Biomes.SWAMP,Biomes.SWAMP_HILLS);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

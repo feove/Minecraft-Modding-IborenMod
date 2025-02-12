@@ -107,7 +107,12 @@ public class ModItems {
 
     public static final RegistryObject<ModSpawnEggItem> PIGEON_SPAWN_EGG = ITEMS.register("custom_cow_spawn_egg",
             () -> new ModSpawnEggItem(EntityRegistry.CUSTOM_COW, 0x879995, 0x576ABC,
-                    new Item.Properties().tab(ModItemGroup.IBOREN_GROUP)));
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
+    public static final RegistryObject<ModSpawnEggItem> REN_ZOMBIE_SPAWN_EGG = ITEMS.register("ren_zombie_spawn_egg",
+            () -> new ModSpawnEggItem(EntityRegistry.REN_ZOMBIE, 0x870900, 0x576ABC,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
 
 
     public static void register(IEventBus eventBus) {
