@@ -8,12 +8,15 @@ import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.ai.controller.MovementController;
-import net.minecraft.entity.ai.goal.LookRandomlyGoal;
-import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.CowEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.EggEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
@@ -27,13 +30,18 @@ public class CustomCow extends CowEntity {
     public CustomCow(EntityType<? extends CowEntity> entityType, World world) {
         super(entityType, world);
         // Add here for custom Movements
+        this.hurt(DamageSource.MAGIC, 1.0F);
+        this.goalSelector.addGoal(5, new SwimGoal(this));
+
     }
 
     public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
         return MobEntity.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 10.0D)
+                .add(Attributes.MAX_HEALTH, 20.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.2D)
-                .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE,0.5D);
+                .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE,0.5D)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
+                .add(Attributes.FOLLOW_RANGE,20);
     }
 
     @Override
@@ -53,5 +61,9 @@ public class CustomCow extends CowEntity {
         return null;
     }
 
-
+    @Override
+    public SoundEvent getAmbientSound() {
+        this.playSound(new SoundEvent(CUSTOM_COW.getId()), 1.0F, 1.0F);
+        return null;
+    }
 }

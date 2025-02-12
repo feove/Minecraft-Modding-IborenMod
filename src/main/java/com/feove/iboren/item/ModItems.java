@@ -2,6 +2,7 @@ package com.feove.iboren.item;
 
 import com.feove.iboren.IborenMod;
 import com.feove.iboren.entity.EntityRegistry;
+import com.feove.iboren.item.custom.ModSpawnEggItem;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -104,6 +105,9 @@ public class ModItems {
             () -> new ArmorItem(ModArmorMaterial.REN, EquipmentSlotType.LEGS,
                     new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
 
+    public static final RegistryObject<ModSpawnEggItem> PIGEON_SPAWN_EGG = ITEMS.register("custom_cow_spawn_egg",
+            () -> new ModSpawnEggItem(EntityRegistry.CUSTOM_COW, 0x879995, 0x576ABC,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_GROUP)));
 
 
     public static void register(IEventBus eventBus) {
