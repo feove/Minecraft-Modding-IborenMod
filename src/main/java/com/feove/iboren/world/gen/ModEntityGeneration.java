@@ -17,8 +17,8 @@ public class ModEntityGeneration {
         addEntityToAllBiomesExceptThese(event, EntityRegistry.CUSTOM_COW.get(),
                 50, 4, 8, Biomes.PLAINS, Biomes.BIRCH_FOREST);
 
-        addEntityToAllBiomesExceptThese(event,EntityRegistry.REN_ZOMBIE.get(),
-                100,5,20,Biomes.SWAMP,Biomes.SWAMP_HILLS);
+        addEntityToSpecificBiomes(event,EntityRegistry.REN_ZOMBIE.get(),
+                100,5,20,Biomes.DARK_FOREST,Biomes.BIRCH_FOREST,Biomes.DARK_FOREST_HILLS);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

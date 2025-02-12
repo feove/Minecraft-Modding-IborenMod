@@ -34,6 +34,7 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<RenZombie>> REN_ZOMBIE =
             ENTITY_TYPES.register("ren_zombie",
             () -> EntityType.Builder.of(RenZombie::new, EntityClassification.MONSTER)
+                    .fireImmune()
                     .sized(0.6F, 1.95F)
                     .build(new ResourceLocation(IborenMod.MOD_ID, "ren_zombie").toString())
             );
