@@ -52,7 +52,8 @@ public class RenZombie extends ZombieEntity {
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
                 .add(Attributes.FOLLOW_RANGE, 50.0D)
                 .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE, 0.005D)
-                .add(Attributes.ARMOR, 3.0D);
+                .add(Attributes.ARMOR, 3.0D)
+                .add(Attributes.ARMOR_TOUGHNESS, 0.0D);
     }
 
 
