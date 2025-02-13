@@ -1,11 +1,13 @@
+![Mod Logo](src/main/resources/iboren_mod_logo.png)
+
 # Iboren Mod
 
 Welcome to the Iboren Minecraft Mod repository! This mod adds new items and blocks to the Minecraft world, including custom ore and other fun features.
 
-![Mod Logo](src/main/resources/iboren_mod_logo.png)
 
 ![ScreenShot](screenshots/tab_equiments.png)
 ![ScreenShot](screenshots/custom_cow.png)
+![ScreenShot](screenshots/ren_zombie.png)
 
 
 ## Features

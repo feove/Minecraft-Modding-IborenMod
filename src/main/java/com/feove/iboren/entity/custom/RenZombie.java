@@ -13,6 +13,7 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -22,9 +23,24 @@ public class RenZombie extends ZombieEntity {
 
     private static final Random RANDOM = new Random();
 
+    private static final ResourceLocation[] AVAILABLE_TEXTURES = new ResourceLocation[] {
+            new ResourceLocation("iboren", "textures/entity/ren_zombie/ren_zombie_t1.png"),
+            new ResourceLocation("iboren", "textures/entity/ren_zombie/ren_zombie_t2.png"),
+            new ResourceLocation("iboren", "textures/entity/ren_zombie/ren_zombie_t3.png"),
+            new ResourceLocation("iboren", "textures/entity/ren_zombie/ren_zombie_t4.png")
+
+    };
+
+    private final ResourceLocation texture;
+
     public RenZombie(EntityType<? extends ZombieEntity> entityType, World world) {
         super(entityType, world);
         this.populateEquipment();
+        this.texture = AVAILABLE_TEXTURES[RANDOM.nextInt(AVAILABLE_TEXTURES.length)];
+    }
+
+    public ResourceLocation getTexture() {
+        return this.texture;
     }
 
     public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
