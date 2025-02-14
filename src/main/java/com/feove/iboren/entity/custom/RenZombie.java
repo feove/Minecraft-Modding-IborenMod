@@ -15,9 +15,15 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import org.spongepowered.asm.mixin.injection.At;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.Random;
+
 
 public class RenZombie extends ZombieEntity {
 
@@ -28,7 +34,6 @@ public class RenZombie extends ZombieEntity {
             new ResourceLocation("iboren", "textures/entity/ren_zombie/ren_zombie_t2.png"),
             new ResourceLocation("iboren", "textures/entity/ren_zombie/ren_zombie_t3.png"),
             new ResourceLocation("iboren", "textures/entity/ren_zombie/ren_zombie_t4.png")
-
     };
 
     private final ResourceLocation texture;

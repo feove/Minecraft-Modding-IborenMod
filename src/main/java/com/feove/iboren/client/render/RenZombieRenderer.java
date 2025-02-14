@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.entity.layers.BipedArmorLayer;
 import net.minecraft.client.renderer.entity.layers.HeldItemLayer;
 import net.minecraft.client.renderer.entity.model.ZombieModel;
 import net.minecraft.util.ResourceLocation;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 public class RenZombieRenderer extends MobRenderer<RenZombie, ZombieModel<RenZombie>> {
 
@@ -18,7 +19,6 @@ public class RenZombieRenderer extends MobRenderer<RenZombie, ZombieModel<RenZom
 
     @Override
     public ResourceLocation getTextureLocation(RenZombie renZombie) {
-
         return renZombie.getTexture();
     }
 }
