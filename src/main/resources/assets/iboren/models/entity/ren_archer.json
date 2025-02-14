@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:skeleton",
+  "textures": {
+    "layer0": "iboren:textures/entity/ren_archer.png"
+  }
+}

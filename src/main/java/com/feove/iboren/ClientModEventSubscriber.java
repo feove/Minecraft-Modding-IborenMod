@@ -1,6 +1,7 @@
 package com.feove.iboren;
 
 import com.feove.iboren.client.render.CustomCowRenderer;
+import com.feove.iboren.client.render.RenArcherRenderer;
 import com.feove.iboren.client.render.RenZombieRenderer;
 import com.feove.iboren.entity.EntityRegistry;
 import net.minecraftforge.api.distmarker.Dist;
@@ -20,7 +21,7 @@ public class ClientModEventSubscriber {
 
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.REN_ZOMBIE.get(), RenZombieRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.CUSTOM_COW.get(), CustomCowRenderer::new);
-
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.REN_ARCHER.get(), RenArcherRenderer::new);
     }
 }
 

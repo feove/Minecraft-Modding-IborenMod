@@ -19,6 +19,7 @@ public class RenZombieRenderer extends MobRenderer<RenZombie, ZombieModel<RenZom
 
     @Override
     public ResourceLocation getTextureLocation(RenZombie renZombie) {
+
         return renZombie.getTexture();
     }
 }

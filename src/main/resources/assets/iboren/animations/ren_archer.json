@@ -1,0 +1,19 @@
+{
+  "animations": {
+    "idle": {
+      "loop": true,
+      "frame": [
+        { "frame": 0, "time": 0.0 },
+        { "frame": 1, "time": 0.5 }
+      ]
+    },
+    "attack": {
+      "loop": false,
+      "frame": [
+        { "frame": 0, "time": 0.0 },
+        { "frame": 1, "time": 0.2 },
+        { "frame": 2, "time": 0.4 }
+      ]
+    }
+  }
+}

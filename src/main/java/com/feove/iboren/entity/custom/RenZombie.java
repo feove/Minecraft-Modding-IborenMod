@@ -27,7 +27,7 @@ import java.util.Random;
 
 public class RenZombie extends ZombieEntity {
 
-    private static final Random RANDOM = new Random();
+    static final Random RANDOM = new Random();
 
     private static final ResourceLocation[] AVAILABLE_TEXTURES = new ResourceLocation[] {
             new ResourceLocation("iboren", "textures/entity/ren_zombie/ren_zombie_t1.png"),

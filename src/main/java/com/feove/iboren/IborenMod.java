@@ -76,6 +76,9 @@
                 EntitySpawnPlacementRegistry.register(EntityRegistry.REN_ZOMBIE.get(),EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
                         Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::checkMobSpawnRules);
 
+                EntitySpawnPlacementRegistry.register(EntityRegistry.REN_ARCHER.get(),EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
+                        Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::checkMobSpawnRules);
+
             });
 
 
@@ -83,21 +86,16 @@
             LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
         }
 
-
         private void doClientStuff(final FMLClientSetupEvent event) {
-
-
 
         }
 
-        private void enqueueIMC(final InterModEnqueueEvent event)
-        {
+        private void enqueueIMC(final InterModEnqueueEvent event) {
             // some example code to dispatch IMC to another mod
             InterModComms.sendTo("iboren", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
         }
 
-        private void processIMC(final InterModProcessEvent event)
-        {
+        private void processIMC(final InterModProcessEvent event) {
             // some example code to receive and process InterModComms from other mods
             LOGGER.info("Got IMC {}", event.getIMCStream().
                     map(m->m.getMessageSupplier().get()).

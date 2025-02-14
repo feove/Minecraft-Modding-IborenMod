@@ -3,6 +3,7 @@ package com.feove.iboren.events;
 import com.feove.iboren.IborenMod;
 import com.feove.iboren.entity.EntityRegistry;
 import com.feove.iboren.entity.custom.CustomCow;
+import com.feove.iboren.entity.custom.RenArcher;
 import com.feove.iboren.entity.custom.RenZombie;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.SpawnEggItem;
@@ -20,6 +21,7 @@ public class ModEventBusEvents {
 
         event.put(EntityRegistry.CUSTOM_COW.get(), CustomCow.setCustomAttributes().build());
         event.put(EntityRegistry.REN_ZOMBIE.get(), RenZombie.setCustomAttributes().build());
+        event.put(EntityRegistry.REN_ARCHER.get(), RenArcher.setCustomAttributes().build());
     }
 
     @SubscribeEvent
