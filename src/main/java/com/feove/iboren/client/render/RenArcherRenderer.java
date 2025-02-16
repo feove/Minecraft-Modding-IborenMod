@@ -16,7 +16,7 @@ public class RenArcherRenderer extends GeoEntityRenderer<RenArcher> {
     private static final ResourceLocation TEXTURE = new ResourceLocation("iboren:textures/entity/ren_archer/ren_archer.png");
 
     public RenArcherRenderer(EntityRendererManager renderManager) {
-        super(renderManager, new RenArcherModel()); // Ensure RenArcherModel exists
+        super(renderManager, new RenArcherModel());
         this.shadowRadius = 0.5F;
     }
 
