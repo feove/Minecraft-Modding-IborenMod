@@ -58,15 +58,19 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         AnimationController<E> controller = event.getController();
 
+
+
         if (isDeadOrDying()) {
             controller.setAnimation(new AnimationBuilder().addAnimation("animation.ren_archer.die", false));
             return PlayState.CONTINUE;
         }
 
         if (isAggressive()) {
-            controller.setAnimation(new AnimationBuilder().addAnimation("animation.ren_archer.attack", true));
+            controller.setAnimation(new AnimationBuilder().addAnimation("animation.ren_archer.attack", false));
+            isAttacking = true;
             return PlayState.CONTINUE;
         }
+        isAttacking = false;
 
         if (event.isMoving()) {
             controller.setAnimation(new AnimationBuilder().addAnimation("animation.ren_archer.walk", true));
@@ -85,10 +89,13 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
 
                 if (distanceToTarget <= MAX_ATTACK_RANGE * MAX_ATTACK_RANGE) {
                     attackCooldown--;
+
                     if (attackCooldown <= 0) {
-                        isAttacking = true;
-                        shootArrow();
-                        attackCooldown = 36;
+                        if (isBowChangeComplete()) {
+                            isAttacking = true;
+                            shootArrow();
+                            attackCooldown = 36;
+                        }
                     }
                 } else {
                     isAttacking = false;
@@ -97,8 +104,23 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
                 isAttacking = false;
             }
         }
+
+
+        if (bowChangeTicks > 0) {
+            bowChangeTicks--;
+        } else {
+            ensureBowEquipped();
+        }
+
         super.aiStep();
     }
+
+    private void ensureBowEquipped() {
+        if (this.getItemBySlot(EquipmentSlotType.MAINHAND).isEmpty()) {
+            this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.BOW));
+        }
+    }
+
 
     @Override
     public void performRangedAttack(LivingEntity target, float distanceFactor) {
@@ -147,4 +169,25 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
     public AnimationFactory getFactory() {
         return factory;
     }
+
+    private int bowChangeTicks = 0; // Timer for bow transition
+
+    public void startBowChangeTimer() {
+        this.bowChangeTicks = 20; // Set countdown to 20 ticks
+    }
+
+    public void tick() {
+        super.tick(); // Call the default entity tick method
+
+        if (bowChangeTicks > 0) {
+            bowChangeTicks--; // Decrease the timer every tick
+        }
+    }
+
+    public boolean isBowChangeComplete() {
+        return bowChangeTicks <= 0;
+    }
+
+
+
 }
