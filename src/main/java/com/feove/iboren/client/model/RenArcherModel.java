@@ -19,4 +19,6 @@ public class RenArcherModel extends AnimatedGeoModel<RenArcher> {
     public ResourceLocation getAnimationFileLocation(RenArcher renArcher) {
         return new ResourceLocation("iboren", "animations/ren_archer.animation.json");
     }
+
+
 }

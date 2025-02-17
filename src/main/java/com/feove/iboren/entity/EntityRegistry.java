@@ -43,7 +43,8 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<RenArcher>> REN_ARCHER =
             ENTITY_TYPES.register("ren_archer",
                     () -> EntityType.Builder.of(RenArcher::new, EntityClassification.MONSTER)
-                            .sized(0.6F, 1.95F) // Set the size of your entity
+                            .sized(0.6F, 1.95F)
+                            .fireImmune()
                             .build(new ResourceLocation(IborenMod.MOD_ID, "ren_archer").toString())
             );
 

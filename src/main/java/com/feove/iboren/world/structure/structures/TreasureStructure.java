@@ -9,8 +9,11 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.StructureFeature;
+import net.minecraft.world.gen.feature.jigsaw.JigsawManager;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructureStart;
+import net.minecraft.world.gen.feature.structure.VillageConfig;
 import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.Template;
 import net.minecraft.world.gen.feature.template.TemplateManager;
@@ -22,11 +25,13 @@ import javax.annotation.Nullable;
 public class TreasureStructure extends Structure<NoFeatureConfig> {
 
     public TreasureStructure(Codec<NoFeatureConfig> codec) {
+
         super(codec);
     }
 
     @Override
     public IStartFactory<NoFeatureConfig> getStartFactory() {
+
         return Start::new;
     }
 
@@ -38,16 +43,7 @@ public class TreasureStructure extends Structure<NoFeatureConfig> {
 
 
         @Override
-        public void generatePieces(DynamicRegistries dynamicRegistries, ChunkGenerator chunkGenerator, TemplateManager templateManager, int chunkX, int chunkZ, Biome biome, NoFeatureConfig config) {
-            int x = chunkX * 16;
-            int z = chunkZ * 16;
-            int y = chunkGenerator.getBaseHeight(x, z, Heightmap.Type.WORLD_SURFACE_WG);
-            BlockPos blockpos = new BlockPos(x, y, z);
-
-            Template template = templateManager.get(new ResourceLocation("iboren:iboren_treasure"));
-
-            }
+        public void generatePieces(DynamicRegistries dynamicRegistries, ChunkGenerator ChunkGen, TemplateManager templateManager, int p_230364_4_, int p_230364_5_, Biome p_230364_6_, NoFeatureConfig p_230364_7_) {
         }
-
-
+    }
 }
