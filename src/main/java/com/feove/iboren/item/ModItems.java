@@ -114,6 +114,11 @@ public class ModItems {
             () -> new ModSpawnEggItem(EntityRegistry.REN_ZOMBIE, 0x870900, 0x576ABC,
                     new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
 
+    public static final RegistryObject<ModSpawnEggItem> REN_ARCHER_SPAWN_EGG = ITEMS.register("ren_archer_spawn_egg",
+            () -> new ModSpawnEggItem(EntityRegistry.REN_ARCHER, 0x870550, 0x576EBC,
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
+
     public static final RegistryObject<Item> REN_BOW = ITEMS.register("ren_bow",
             () -> new RenBow(
                     new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)

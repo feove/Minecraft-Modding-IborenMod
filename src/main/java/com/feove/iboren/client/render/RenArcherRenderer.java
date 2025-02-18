@@ -2,6 +2,7 @@ package com.feove.iboren.client.render;
 
 import com.feove.iboren.client.model.RenArcherModel;
 import com.feove.iboren.entity.custom.RenArcher;
+import com.feove.iboren.item.ModItems;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
@@ -17,7 +18,6 @@ import software.bernie.geckolib3.renderers.geo.GeoLayerRenderer;
 
 public class RenArcherRenderer extends GeoEntityRenderer<RenArcher> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation("iboren", "textures/entity/ren_archer/ren_archer.png");
 
     public RenArcherRenderer(EntityRendererManager renderManager) {
         super(renderManager, new RenArcherModel());
@@ -28,7 +28,7 @@ public class RenArcherRenderer extends GeoEntityRenderer<RenArcher> {
                                float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks,
                                float netHeadYaw, float headPitch) {
 
-                ItemStack bow = renArcher.getItemBySlot(EquipmentSlotType.MAINHAND);
+                ItemStack bow = new ItemStack(ModItems.REN_BOW.get());
                 if (!bow.isEmpty()) {
                     matrixStack.pushPose();
 
@@ -58,19 +58,15 @@ public class RenArcherRenderer extends GeoEntityRenderer<RenArcher> {
         this.shadowRadius = 0.5F;
     }
 
-    @Override
-    public ResourceLocation getTextureLocation(RenArcher renArcher) {
-        return TEXTURE;
-    }
 
-    private static int BowDisplayDelay = 190;
+    private static int BowDisplayDelay = 210;
 
     public static void setBowOnLegs(MatrixStack matrixStack) {
 
         if (BowDisplayDelay <= 0) {
 
-            matrixStack.translate(0.0D, 0.6D, -1.8D);
-            Quaternion rotation = new Quaternion(0.0F, 0F, 0.8F, 0.45F);
+            matrixStack.translate(-0.3D, 0.36, -1.4D);
+            Quaternion rotation = new Quaternion(0.0F, 0.2F, 90.0F, true);
             matrixStack.mulPose(rotation);
 
         }else{
@@ -79,10 +75,20 @@ public class RenArcherRenderer extends GeoEntityRenderer<RenArcher> {
     }
 
     public static void setBowOnBack(MatrixStack matrixStack) {
-        matrixStack.translate(0.0D, 1.3D, 0.2D);
+
+        matrixStack.translate(-0.1D, 1.1D, 0.2D);
         matrixStack.scale(0.75F, 0.75F, 0.75F);
-        Quaternion rotation = new Quaternion(40F, 0F, 80F, true);
+        Quaternion rotation = new Quaternion(90F, 50F, 80F, true);
         matrixStack.mulPose(rotation);
-        BowDisplayDelay = 190;
+
+        BowDisplayDelay = 210;
     }
+
+    @Override
+    public ResourceLocation getTextureLocation(RenArcher renArcher) {
+        return renArcher.archer_texture;
+    }
+
+
+
 }

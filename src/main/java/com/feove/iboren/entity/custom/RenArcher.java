@@ -1,5 +1,6 @@
 package com.feove.iboren.entity.custom;
 
+import com.feove.iboren.item.ModItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -8,34 +9,55 @@ import net.minecraft.entity.monster.SkeletonEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.potion.Effects;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
-import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.Animation;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
+import java.util.Random;
+
 public class RenArcher extends SkeletonEntity implements IAnimatable {
 
+    public static final Random ARCHER_RANDOM = new Random();
+
+    private static final ResourceLocation[] ARCHER_TEXTURES = new ResourceLocation[] {
+            new ResourceLocation("textures/entity/ren_archer/ren_archer_t1.png"),
+            new ResourceLocation("textures/entity/ren_archer/ren_archer_t2.png"),
+    };
+
+
+    public final ResourceLocation archer_texture;
     private final AnimationFactory factory = new AnimationFactory(this);
-    private boolean isAttacking = false;
+
     private int attackCooldown = 60;
 
     private static final double MAX_ATTACK_RANGE = 30.0D;
 
+
     public RenArcher(EntityType<? extends SkeletonEntity> entityType, World world) {
         super(entityType, world);
+        this.archer_texture =  ARCHER_TEXTURES[RenArcher.ARCHER_RANDOM.nextInt(ARCHER_TEXTURES.length)];
         this.populateEquipment();
+
     }
 
     private void populateEquipment() {
-        this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.BOW));
+        this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(ModItems.REN_BOW.get()));
     }
+
+    @Override
+    public boolean canTakeItem(ItemStack itemStack) {
+        return itemStack.getItem() == ModItems.REN_BOW.get();
+    }
+
 
     @Override
     protected void registerGoals() {
@@ -50,6 +72,7 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.5D)
                 .add(Attributes.FOLLOW_RANGE, 50.0D)
                 .add(Attributes.ARMOR, 3.0D);
+
     }
 
     @Override
@@ -57,34 +80,35 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
         data.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
     }
 
-    private int attackAnimationDelay = 400;
+    private int attackAnimationDelay = 270;
     private boolean finishToPrepar = true;
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         AnimationController<E> controller = event.getController();
 
+        if (isDeadOrDying()) {
+
+            controller.setAnimation(new AnimationBuilder().addAnimation("animation.ren_archer.die", false));
+            return PlayState.STOP;
+        }
+
         if (isAggressive() && finishToPrepar){
 
-            if (attackAnimationDelay == 0){
-                controller.setAnimation(new AnimationBuilder().addAnimation("animation.ren_archer.walk", true));
+            if (attackAnimationDelay == 0 || controller.getCurrentAnimation() == null){
+                controller.setAnimation(new AnimationBuilder().addAnimation("animation.ren_archer.attacking", true));
                 return PlayState.CONTINUE;
             }else{
                 attackAnimationDelay--;
             }
         }
 
-        if (isDeadOrDying()) {
-            controller.setAnimation(new AnimationBuilder().addAnimation("animation.ren_archer.die", false));
-            return PlayState.CONTINUE;
-        }
-
         if (isAggressive()) {
-            controller.setAnimation(new AnimationBuilder().addAnimation("animation.ren_archer.attacking", false));
+            controller.setAnimation(new AnimationBuilder().addAnimation("animation.ren_archer.attack_preparation", false));
             finishToPrepar = true;
             return PlayState.CONTINUE;
         }
 
-        attackAnimationDelay = 400;
+        attackAnimationDelay = 270;
         finishToPrepar = false;
 
         if (event.isMoving()) {
@@ -94,6 +118,27 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
 
         controller.setAnimation(new AnimationBuilder().addAnimation("animation.ren_archer.idle", true));
         return PlayState.CONTINUE;
+    }
+
+    @Override
+    public void travel(Vector3d movement) {
+
+        super.travel(Vector3d.ZERO);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        LivingEntity target = this.getTarget();
+
+        if (target == null) {
+           this.level.getNearestPlayer(this, 100.0D);
+        }
+
+        if (this.getTarget() != null) {
+            this.getLookControl().setLookAt(this.getTarget(), 10.0F, 10.0F);
+        }
     }
 
     @Override
@@ -111,35 +156,13 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
 
                     if (attackCooldown <= 0) {
 
-                            isAttacking = true;
                             shootArrow();
                             attackCooldown = 36;
                     }
-                } else {
-
-                    isAttacking = false;
                 }
-            } else {
-                isAttacking = false;
             }
         }
-
-        ensureBowEquipped();
         super.aiStep();
-    }
-
-    private void ensureBowEquipped() {
-        if (this.getItemBySlot(EquipmentSlotType.MAINHAND).isEmpty()) {
-            this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(Items.BOW));
-        }
-    }
-
-    @Override
-    public void performRangedAttack(LivingEntity target, float distanceFactor) {
-
-        if (attackCooldown <= 0){
-            shootArrow();
-        }
     }
 
 
@@ -160,33 +183,46 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
 
             arrow.setPos(spawnX, spawnY, spawnZ);
 
-            // Calculate aim
             double d0 = target.getX() - spawnX;
             double d1 = target.getY(0.33333333D) - spawnY;
             double d2 = target.getZ() - spawnZ;
 
-            double speed = 2.0D;
-            arrow.shoot(d0, d1 + d1 * 0.1D, d2, (float) speed, 6.0F);
-            arrow.setBaseDamage(1.0D);
+            double speed = 4.5D;
+            double accuracy = 1.5F;
+            arrow.shoot(d0, d1 + d1 * 0.15D, d2, (float) speed, (float) accuracy);
+
+            arrow.shoot(d0, d1 + d1 * 0.1D, d2, (float) speed, 4.0F);
+            arrow.setBaseDamage(4.0D);
+            arrow.setKnockback(2);
+            arrow.setCritArrow(true);
+            arrow.setNoGravity(true);
+
+            applyRandomBadEffect(arrow);
 
             this.level.addFreshEntity(arrow);
 
-            isAttacking = false;
         }
     }
 
+    private void applyRandomBadEffect(ArrowEntity arrow) {
 
-    @Override
-    public boolean canTakeItem(ItemStack itemStack) {
-        return itemStack.getItem() == Items.ARROW;
+        Random random = RenZombie.RANDOM;
+
+        EffectInstance[] badEffects = {
+                new EffectInstance(Effects.POISON, 100, 1),
+                new EffectInstance(Effects.WEAKNESS, 200, 1),
+                new EffectInstance(Effects.BLINDNESS, 100, 0),
+                new EffectInstance(Effects.MOVEMENT_SLOWDOWN, 150, 2),
+                new EffectInstance(Effects.WITHER, 100, 1)
+        };
+
+        EffectInstance chosenEffect = badEffects[random.nextInt(badEffects.length)];
+
+        arrow.addEffect(chosenEffect);
     }
 
     public AnimationFactory getFactory() {
         return factory;
     }
-
-
-
-
 
 }

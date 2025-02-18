@@ -20,7 +20,7 @@ public class ModEntityGeneration {
         addEntityToSpecificBiomes(event,EntityRegistry.REN_ZOMBIE.get(),
                 100,5,20,Biomes.DARK_FOREST,Biomes.BIRCH_FOREST,Biomes.DARK_FOREST_HILLS);
 
-        addEntityToAllBiomesExceptThese(event,EntityRegistry.REN_ARCHER.get(),100,1,10,Biomes.DESERT,Biomes.DESERT_HILLS);
+        addEntityToSpecificBiomes(event,EntityRegistry.REN_ARCHER.get(),100,1,10);
     }
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,

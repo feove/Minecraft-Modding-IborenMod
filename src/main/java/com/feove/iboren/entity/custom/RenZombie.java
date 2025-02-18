@@ -29,7 +29,7 @@ public class RenZombie extends ZombieEntity {
 
     static final Random RANDOM = new Random();
 
-    private static final ResourceLocation[] AVAILABLE_TEXTURES = new ResourceLocation[] {
+    private static final ResourceLocation[] TEXTURES = new ResourceLocation[] {
             new ResourceLocation("iboren", "textures/entity/ren_zombie/ren_zombie_t1.png"),
             new ResourceLocation("iboren", "textures/entity/ren_zombie/ren_zombie_t2.png"),
             new ResourceLocation("iboren", "textures/entity/ren_zombie/ren_zombie_t3.png"),
@@ -41,7 +41,7 @@ public class RenZombie extends ZombieEntity {
     public RenZombie(EntityType<? extends ZombieEntity> entityType, World world) {
         super(entityType, world);
         this.populateEquipment();
-        this.texture = AVAILABLE_TEXTURES[RANDOM.nextInt(AVAILABLE_TEXTURES.length)];
+        this.texture = TEXTURES[RANDOM.nextInt(TEXTURES.length)];
     }
 
     public ResourceLocation getTexture() {
@@ -49,7 +49,7 @@ public class RenZombie extends ZombieEntity {
     }
 
     public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
-        double speed = RANDOM.nextDouble() < 0.1 ? 0.45D : 0.25D;
+        double speed = RANDOM.nextDouble() < 0.1 ? 0.45D : 0.20D;
         return MobEntity.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 40.0D)
                 .add(Attributes.MOVEMENT_SPEED, speed)
