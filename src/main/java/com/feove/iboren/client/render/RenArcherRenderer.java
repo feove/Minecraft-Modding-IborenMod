@@ -34,11 +34,11 @@ public class RenArcherRenderer extends GeoEntityRenderer<RenArcher> {
 
                     if (renArcher.isAggressive()) {
                         setBowOnLegs(matrixStack);
-                        renArcher.startBowChangeTimer(); // Start 20-tick countdown
+
                     } else {
-                        if (renArcher.isBowChangeComplete()) { // Check if 20 ticks have passed
+
                             setBowOnBack(matrixStack);
-                        }
+
                     }
 
                     Minecraft.getInstance().getItemRenderer().renderStatic(
@@ -63,10 +63,19 @@ public class RenArcherRenderer extends GeoEntityRenderer<RenArcher> {
         return TEXTURE;
     }
 
+    private static int BowDisplayDelay = 190;
+
     public static void setBowOnLegs(MatrixStack matrixStack) {
-        matrixStack.translate(0.0D, 0.6D, -1.5D);
-        Quaternion rotation = new Quaternion(0.0F, 0F, 0.8F, 0.45F);
-        matrixStack.mulPose(rotation);
+
+        if (BowDisplayDelay <= 0) {
+
+            matrixStack.translate(0.0D, 0.6D, -1.8D);
+            Quaternion rotation = new Quaternion(0.0F, 0F, 0.8F, 0.45F);
+            matrixStack.mulPose(rotation);
+
+        }else{
+            BowDisplayDelay--;
+        }
     }
 
     public static void setBowOnBack(MatrixStack matrixStack) {
@@ -74,5 +83,6 @@ public class RenArcherRenderer extends GeoEntityRenderer<RenArcher> {
         matrixStack.scale(0.75F, 0.75F, 0.75F);
         Quaternion rotation = new Quaternion(40F, 0F, 80F, true);
         matrixStack.mulPose(rotation);
+        BowDisplayDelay = 190;
     }
 }
