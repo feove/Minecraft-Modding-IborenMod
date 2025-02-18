@@ -3,6 +3,7 @@ package com.feove.iboren.item;
 import com.feove.iboren.IborenMod;
 import com.feove.iboren.entity.EntityRegistry;
 import com.feove.iboren.item.custom.ModSpawnEggItem;
+import com.feove.iboren.item.custom.RenBow;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -113,7 +114,12 @@ public class ModItems {
             () -> new ModSpawnEggItem(EntityRegistry.REN_ZOMBIE, 0x870900, 0x576ABC,
                     new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
 
-
+    public static final RegistryObject<Item> REN_BOW = ITEMS.register("ren_bow",
+            () -> new RenBow(
+                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)
+                            .fireResistant()
+                            .stacksTo(1)
+                            .rarity(Rarity.UNCOMMON)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
