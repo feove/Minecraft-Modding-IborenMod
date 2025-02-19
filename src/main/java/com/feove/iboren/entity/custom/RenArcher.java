@@ -9,6 +9,7 @@ import net.minecraft.entity.monster.SkeletonEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.ResourceLocation;
@@ -26,28 +27,25 @@ import java.util.Random;
 
 public class RenArcher extends SkeletonEntity implements IAnimatable {
 
-    public static final Random ARCHER_RANDOM = new Random();
-
-    private static final ResourceLocation[] ARCHER_TEXTURES = new ResourceLocation[] {
-            new ResourceLocation("textures/entity/ren_archer/ren_archer_t1.png"),
-            new ResourceLocation("textures/entity/ren_archer/ren_archer_t2.png"),
-    };
-
-
-    public final ResourceLocation archer_texture;
     private final AnimationFactory factory = new AnimationFactory(this);
 
     private int attackCooldown = 60;
 
     private static final double MAX_ATTACK_RANGE = 30.0D;
 
+    private static final ResourceLocation[] ARCHER_TEXTURES = new ResourceLocation[]{
+            new ResourceLocation("iboren", "textures/entity/ren_archer/ren_archer_t1.png"),
+            new ResourceLocation("iboren", "textures/entity/ren_archer/ren_archer_t2.png"),
+    };
+
+    public final ResourceLocation archer_texture;
 
     public RenArcher(EntityType<? extends SkeletonEntity> entityType, World world) {
         super(entityType, world);
-        this.archer_texture =  ARCHER_TEXTURES[RenArcher.ARCHER_RANDOM.nextInt(ARCHER_TEXTURES.length)];
         this.populateEquipment();
-
+        this.archer_texture = ARCHER_TEXTURES[this.random.nextInt(ARCHER_TEXTURES.length)];
     }
+
 
     private void populateEquipment() {
         this.setItemSlot(EquipmentSlotType.MAINHAND, new ItemStack(ModItems.REN_BOW.get()));
@@ -56,6 +54,11 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
     @Override
     public boolean canTakeItem(ItemStack itemStack) {
         return itemStack.getItem() == ModItems.REN_BOW.get();
+    }
+
+    @Override
+    public void performRangedAttack(LivingEntity target, float distanceFactor) {
+        // nothing to avoid default skeleton shooting
     }
 
 
@@ -80,7 +83,7 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
         data.addAnimationController(new AnimationController<>(this, "controller", 0, this::predicate));
     }
 
-    private int attackAnimationDelay = 270;
+    private int attackAnimationDelay = 240;
     private boolean finishToPrepar = true;
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
@@ -92,12 +95,12 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
             return PlayState.STOP;
         }
 
-        if (isAggressive() && finishToPrepar){
+        if (isAggressive() && finishToPrepar) {
 
-            if (attackAnimationDelay == 0 || controller.getCurrentAnimation() == null){
+            if (attackAnimationDelay == 0 || controller.getCurrentAnimation() == null) {
                 controller.setAnimation(new AnimationBuilder().addAnimation("animation.ren_archer.attacking", true));
                 return PlayState.CONTINUE;
-            }else{
+            } else {
                 attackAnimationDelay--;
             }
         }
@@ -108,7 +111,7 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
             return PlayState.CONTINUE;
         }
 
-        attackAnimationDelay = 270;
+        attackAnimationDelay = 240;
         finishToPrepar = false;
 
         if (event.isMoving()) {
@@ -133,7 +136,7 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
         LivingEntity target = this.getTarget();
 
         if (target == null) {
-           this.level.getNearestPlayer(this, 100.0D);
+            this.level.getNearestPlayer(this, 100.0D);
         }
 
         if (this.getTarget() != null) {
@@ -143,7 +146,7 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
 
     @Override
     public void aiStep() {
-        if (!isAggressive()){
+        if (!isAggressive()) {
             attackCooldown = 60;
         }
 
@@ -156,8 +159,8 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
 
                     if (attackCooldown <= 0) {
 
-                            shootArrow();
-                            attackCooldown = 36;
+                        shootArrow();
+                        attackCooldown = 50;
                     }
                 }
             }
@@ -168,6 +171,7 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
 
     private void shootArrow() {
         if (!this.level.isClientSide && getTarget() != null) {
+
             LivingEntity target = this.getTarget();
             double distanceToTarget = this.distanceToSqr(target);
 
@@ -178,7 +182,7 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
             ArrowEntity arrow = new ArrowEntity(this.level, this);
 
             double spawnX = this.getX();
-            double spawnY = this.getY() + 0.5D;
+            double spawnY = this.getY() + 0.1D;
             double spawnZ = this.getZ();
 
             arrow.setPos(spawnX, spawnY, spawnZ);
@@ -187,20 +191,29 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
             double d1 = target.getY(0.33333333D) - spawnY;
             double d2 = target.getZ() - spawnZ;
 
-            double speed = 4.5D;
+            double speed = 4.0D;
             double accuracy = 1.5F;
             arrow.shoot(d0, d1 + d1 * 0.15D, d2, (float) speed, (float) accuracy);
 
             arrow.shoot(d0, d1 + d1 * 0.1D, d2, (float) speed, 4.0F);
-            arrow.setBaseDamage(4.0D);
+            arrow.setBaseDamage(3.0D);
             arrow.setKnockback(2);
-            arrow.setCritArrow(true);
+
             arrow.setNoGravity(true);
 
             applyRandomBadEffect(arrow);
 
-            this.level.addFreshEntity(arrow);
+            for (int i = 0; i < 10; i++) {
+                double xOffset = (random.nextDouble() - 0.5D) * 0.1D;
+                double yOffset = (random.nextDouble() - 0.5D) * 0.1D;
+                double zOffset = (random.nextDouble() - 0.5D) * 0.1D;
 
+                this.level.addParticle(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE,
+                        spawnX + xOffset, spawnY + yOffset, spawnZ + zOffset,
+                        d0 * 0.01D, d1 * 0.01D, d2 * 0.01D);
+            }
+
+            this.level.addFreshEntity(arrow);
         }
     }
 

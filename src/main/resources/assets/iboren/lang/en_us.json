@@ -21,6 +21,9 @@
 
   "item.iboren.ren_bow" : "Ren Bow",
 
+  "entity.iboren.ren_archer" : "Ren Archer",
+  "entity.iboren.ren_zombie" : "Ren Zombie",
+
   "item.iboren.ibo_helmet" : "Ibo Helmet",
   "item.iboren.ibo_chestplate" : "Ibo Chestplate",
   "item.iboren.ibo_leggings" : "Ibo Leggings",

@@ -49,7 +49,7 @@ public class RenZombie extends ZombieEntity {
     }
 
     public static AttributeModifierMap.MutableAttribute setCustomAttributes() {
-        double speed = RANDOM.nextDouble() < 0.1 ? 0.45D : 0.20D;
+        double speed = RANDOM.nextDouble() <= 0.01 ? 0.45D : 0.20D;
         return MobEntity.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 40.0D)
                 .add(Attributes.MOVEMENT_SPEED, speed)

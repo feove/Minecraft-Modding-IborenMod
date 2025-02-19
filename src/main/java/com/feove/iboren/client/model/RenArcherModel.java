@@ -12,7 +12,7 @@ public class RenArcherModel extends AnimatedGeoModel<RenArcher> {
 
     @Override
     public ResourceLocation getTextureLocation(RenArcher renArcher) {
-        return new ResourceLocation("iboren", "textures/entity/ren_archer/ren_archer.png");
+        return renArcher.archer_texture;
     }
 
     @Override

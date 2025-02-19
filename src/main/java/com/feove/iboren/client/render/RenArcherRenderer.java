@@ -59,7 +59,7 @@ public class RenArcherRenderer extends GeoEntityRenderer<RenArcher> {
     }
 
 
-    private static int BowDisplayDelay = 210;
+    private static int BowDisplayDelay = 180;
 
     public static void setBowOnLegs(MatrixStack matrixStack) {
 
@@ -81,14 +81,8 @@ public class RenArcherRenderer extends GeoEntityRenderer<RenArcher> {
         Quaternion rotation = new Quaternion(90F, 50F, 80F, true);
         matrixStack.mulPose(rotation);
 
-        BowDisplayDelay = 210;
+        BowDisplayDelay = 180;
     }
-
-    @Override
-    public ResourceLocation getTextureLocation(RenArcher renArcher) {
-        return renArcher.archer_texture;
-    }
-
 
 
 }
