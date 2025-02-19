@@ -29,7 +29,7 @@ public class CustomCow extends CowEntity {
 
     public CustomCow(EntityType<? extends CowEntity> entityType, World world) {
         super(entityType, world);
-        // Add here for custom Movements
+
         this.hurt(DamageSource.MAGIC, 1.0F);
         this.goalSelector.addGoal(5, new SwimGoal(this));
 

@@ -3,6 +3,7 @@ package com.feove.iboren.entity;
 import com.feove.iboren.IborenMod;
 import com.feove.iboren.entity.custom.CustomCow;
 import com.feove.iboren.entity.custom.RenArcher;
+import com.feove.iboren.entity.custom.RenArrow;
 import com.feove.iboren.entity.custom.RenZombie;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -48,6 +49,13 @@ public class EntityRegistry {
                             .build(new ResourceLocation(IborenMod.MOD_ID, "ren_archer").toString())
             );
 
+
+    public static final RegistryObject<EntityType<RenArrow>> REN_ARROW = ENTITY_TYPES.register("ren_arrow",
+            () -> EntityType.Builder.<RenArrow>of(RenArrow::new, EntityClassification.MISC)
+                    .sized(0.5F, 0.5F) // Make sure hitbox is not 0
+                    .clientTrackingRange(4) // Ensure it's visible to clients
+                    .updateInterval(20) // Sync updates properly
+                    .build(new ResourceLocation("iboren", "ren_arrow").toString()));
 
     public static void register(IEventBus eventBus) {
 

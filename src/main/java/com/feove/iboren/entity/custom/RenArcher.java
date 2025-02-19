@@ -1,6 +1,9 @@
 package com.feove.iboren.entity.custom;
 
+import com.feove.iboren.entity.EntityRegistry;
 import com.feove.iboren.item.ModItems;
+import net.minecraft.client.renderer.texture.Texture;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
@@ -179,20 +182,22 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
                 return;
             }
 
-            ArrowEntity arrow = new ArrowEntity(this.level, this);
+            RenArrow arrow = new RenArrow(EntityRegistry.REN_ARROW.get(), this.level);
 
-            double spawnX = this.getX();
-            double spawnY = this.getY() + 0.1D;
-            double spawnZ = this.getZ();
+            arrow.setOwner(this);
+
+            double spawnX = this.getX() - 1.0D;
+            double spawnY = this.getY() + 0.35D;
+            double spawnZ = this.getZ() + 0.3D;
 
             arrow.setPos(spawnX, spawnY, spawnZ);
 
             double d0 = target.getX() - spawnX;
-            double d1 = target.getY(0.33333333D) - spawnY;
+            double d1 = (target.getY(0.33333333D) - 0.3D) - spawnY + 1.0D;
             double d2 = target.getZ() - spawnZ;
 
             double speed = 4.0D;
-            double accuracy = 1.5F;
+            double accuracy = 2.0F;
             arrow.shoot(d0, d1 + d1 * 0.15D, d2, (float) speed, (float) accuracy);
 
             arrow.shoot(d0, d1 + d1 * 0.1D, d2, (float) speed, 4.0F);
@@ -204,6 +209,7 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
             applyRandomBadEffect(arrow);
 
             for (int i = 0; i < 10; i++) {
+
                 double xOffset = (random.nextDouble() - 0.5D) * 0.1D;
                 double yOffset = (random.nextDouble() - 0.5D) * 0.1D;
                 double zOffset = (random.nextDouble() - 0.5D) * 0.1D;
