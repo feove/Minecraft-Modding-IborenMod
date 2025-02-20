@@ -2,6 +2,7 @@ package com.feove.iboren.item;
 
 import com.feove.iboren.IborenMod;
 import com.feove.iboren.entity.EntityRegistry;
+import com.feove.iboren.item.custom.IborenEscape;
 import com.feove.iboren.item.custom.ModSpawnEggItem;
 import com.feove.iboren.item.custom.RenArrowItem;
 import com.feove.iboren.item.custom.RenBow;
@@ -121,14 +122,22 @@ public class ModItems {
 
 
     public static final RegistryObject<Item> REN_BOW = ITEMS.register("ren_bow",
-            () -> new RenBow(
-                    new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)
+            () -> new RenBow(new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)
                             .fireResistant()
                             .stacksTo(1)
-                            .rarity(Rarity.UNCOMMON)));
+                            .rarity(Rarity.RARE)));
 
     public static final RegistryObject<Item> REN_ARROW = ITEMS.register("ren_arrow",
             () -> new RenArrowItem(new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)));
+
+    public static final RegistryObject<Item> GOLD_STRING = ITEMS.register("gold_string",() ->
+            new Item(new Item.Properties().tab(ModItemGroup.IBOREN_GROUP)));
+
+    public static final RegistryObject<Item> IBOREN_ESCAPE = ITEMS.register("iboren_escape",
+            () -> new IborenEscape(new Item.Properties().tab(ModItemGroup.IBOREN_TOOLS)
+                    .fireResistant()
+                    .stacksTo(1)
+                    .rarity(Rarity.EPIC)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

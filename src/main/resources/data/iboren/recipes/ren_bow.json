@@ -1,25 +1,25 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "XDX",
-    "BCB",
-    "XBX"
+    " RS",
+    "ADS",
+    " RS"
   ],
   "key": {
-    "X": {
+    "R": {
       "item": "iboren:ren"
     },
-    "B": {
-      "item": "iboren:ren_block"
+    "A": {
+      "item": "minecraft:enchanted_golden_apple"
+    },
+    "S": {
+      "item": "iboren:gold_string"
     },
     "D": {
       "item": "minecraft:diamond"
-    },
-    "C": {
-      "item": "iboren:ibo_chestplate"
     }
   },
   "result": {
-    "item": "iboren:ren_chestplate"
+    "item": "iboren:ren_bow"
   }
 }

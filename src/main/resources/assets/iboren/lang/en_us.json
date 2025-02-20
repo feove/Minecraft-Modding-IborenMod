@@ -4,6 +4,7 @@
 
   "item.iboren.ibo" : "Ibo",
   "item.iboren.ren" : "Ren",
+  "item.iboren.gold_string" : "Gold String",
 
   "item.iboren.custom_cow_spawn_egg" : "Ibo Cow Egg",
   "item.iboren.ren_zombie_spawn_egg" : "Ren Zombie Egg",
@@ -22,8 +23,11 @@
   "item.iboren.ren_bow" : "Ren Bow",
   "item.iboren.ren_arrow" : "Ren Arrow",
 
+  "item.iboren.iboren_escape" : "Iboren Escape",
+
   "entity.iboren.ren_archer" : "Ren Archer",
   "entity.iboren.ren_zombie" : "Ren Zombie",
+  "entity.iboren.custom_cow" : "Ibo Cow",
 
   "item.iboren.ibo_helmet" : "Ibo Helmet",
   "item.iboren.ibo_chestplate" : "Ibo Chestplate",

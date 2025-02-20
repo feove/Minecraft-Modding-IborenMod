@@ -28,19 +28,15 @@ public class RenBow extends BowItem {
     @Override
     public AbstractArrowEntity customArrow(AbstractArrowEntity arrow) {
 
-        if (arrow.getOwner() instanceof LivingEntity) {
+        RenArrow renArrow = new RenArrow(EntityRegistry.REN_ARROW.get(), arrow.level);
+        renArrow.setOwner( arrow.getOwner());
+        renArrow.setPos(arrow.getX(), arrow.getY(), arrow.getZ());
+        renArrow.xRotO = arrow.xRotO;
+        renArrow.yRotO = arrow.yRotO;
+        renArrow.setBaseDamage(10.0D);
+        renArrow.setGlowing(true);
 
-            RenArrow renArrow = new RenArrow(EntityRegistry.REN_ARROW.get(), arrow.level);
-            renArrow.setOwner( arrow.getOwner());
-            renArrow.setPos(arrow.getX(), arrow.getY(), arrow.getZ());
-            renArrow.xRotO = arrow.xRotO;
-            renArrow.yRotO = arrow.yRotO;
-            renArrow.setBaseDamage(10.0D);
-
-            return renArrow;
-
-        }
-        return arrow;
+        return renArrow;
     }
 
     @Override
@@ -54,11 +50,11 @@ public class RenBow extends BowItem {
             float power = BowItem.getPowerForTime(charge);
             if (power < 0.1F) return;
 
-            if (world.random.nextFloat() < 0.3F) {
+            if (world.random.nextFloat() < 0.25F) {
                 PlayerEntity player = (PlayerEntity) shooter;
 
-                spawnExtraArrow(stack, world, player, power, 5.0F);
-                spawnExtraArrow(stack, world, player, power, -5.0F);
+                spawnExtraArrow(stack, world, player, power, 6.0F);
+                spawnExtraArrow(stack, world, player, power, -6.0F);
             }
         }
     }
@@ -73,7 +69,6 @@ public class RenBow extends BowItem {
         extraArrow.pickup = AbstractArrowEntity.PickupStatus.CREATIVE_ONLY;
         extraArrow.hurtMarked = true;
         extraArrow.animateHurt();
-        extraArrow.setOwner(shooter);
         extraArrow.setKnockback(2);
 
         int powerLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, stack);

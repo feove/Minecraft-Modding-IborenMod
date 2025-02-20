@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  G",
+    " B ",
+    "S  "
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "minecraft:bone"
+    },
+    "S": {
+      "item": "iboren:gold_string"
+    }
+  },
+  "result": {
+    "item": "iboren:ren_arrow"
+  }
+}

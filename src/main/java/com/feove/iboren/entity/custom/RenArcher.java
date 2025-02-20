@@ -200,7 +200,6 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
             double accuracy = 2.0F;
             arrow.shoot(d0, d1 + d1 * 0.15D, d2, (float) speed, (float) accuracy);
 
-            //arrow.shoot(d0, d1 + d1 * 0.1D, d2, (float) speed, 4.0F);
             arrow.setBaseDamage(3.0D);
             arrow.setKnockback(2);
 
