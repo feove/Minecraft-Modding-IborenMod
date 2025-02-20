@@ -19,12 +19,17 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import org.spongepowered.asm.mixin.injection.At;
 
 import javax.annotation.Nullable;
+
+import java.util.Random;
 
 import static com.feove.iboren.entity.EntityRegistry.CUSTOM_COW;
 
 public class CustomCow extends CowEntity {
+
+    static final Random COW_RANDOM = new Random();
 
 
     public CustomCow(EntityType<? extends CowEntity> entityType, World world) {
@@ -50,8 +55,19 @@ public class CustomCow extends CowEntity {
 
     @Override
     public boolean isFood(net.minecraft.item.ItemStack stack) {
-        return stack.getItem().isEdible(); // Example food behavior
+        return stack.getItem().isEdible();
     }
+
+    @Override
+    protected void dropCustomDeathLoot(DamageSource damageSource, int lootingMultiplier, boolean hitRecently) {
+
+        if (COW_RANDOM.nextDouble() < 0.6) {
+
+            int foodAmount = 1 + COW_RANDOM.nextInt(3);
+            this.spawnAtLocation(new ItemStack(Items.BEEF, foodAmount));
+        }
+    }
+
 
     @Override
     protected SoundEvent getDeathSound() {

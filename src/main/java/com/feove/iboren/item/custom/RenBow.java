@@ -34,7 +34,6 @@ public class RenBow extends BowItem {
         renArrow.xRotO = arrow.xRotO;
         renArrow.yRotO = arrow.yRotO;
         renArrow.setBaseDamage(10.0D);
-        renArrow.setGlowing(true);
 
         return renArrow;
     }

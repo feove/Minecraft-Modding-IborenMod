@@ -14,8 +14,8 @@ import java.util.List;
 public class ModEntityGeneration {
     public static void onEntitySpawn(final BiomeLoadingEvent event) {
 
-        addEntityToAllBiomesExceptThese(event, EntityRegistry.CUSTOM_COW.get(),
-                50, 4, 8, Biomes.PLAINS, Biomes.BIRCH_FOREST);
+        addEntityToSpecificBiomes(event, EntityRegistry.CUSTOM_COW.get(),
+                50, 1, 5, Biomes.PLAINS, Biomes.BIRCH_FOREST);
 
         addEntityToSpecificBiomes(event,EntityRegistry.REN_ZOMBIE.get(),
                 100,5,20,Biomes.DARK_FOREST,Biomes.BIRCH_FOREST,Biomes.DARK_FOREST_HILLS);
@@ -25,7 +25,7 @@ public class ModEntityGeneration {
 
     private static void addEntityToAllBiomesExceptThese(BiomeLoadingEvent event, EntityType<?> type,
                                                         int weight, int minCount, int maxCount, RegistryKey<Biome>... biomes) {
-        // Goes through each entry in the biomes and sees if it matches the current biome we are loading
+
         boolean isBiomeSelected = Arrays.stream(biomes).map(RegistryKey::location)
                 .map(Object::toString).anyMatch(s -> s.equals(event.getName().toString()));
 
@@ -36,7 +36,7 @@ public class ModEntityGeneration {
 
     private static void addEntityToSpecificBiomes(BiomeLoadingEvent event, EntityType<?> type,
                                                   int weight, int minCount, int maxCount, RegistryKey<Biome>... biomes) {
-        // Goes through each entry in the biomes and sees if it matches the current biome we are loading
+
         boolean isBiomeSelected = Arrays.stream(biomes).map(RegistryKey::location)
                 .map(Object::toString).anyMatch(s -> s.equals(event.getName().toString()));
 
