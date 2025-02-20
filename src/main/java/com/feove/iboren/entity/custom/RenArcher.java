@@ -186,9 +186,9 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
 
             arrow.setOwner(this);
 
-            double spawnX = this.getX() - 1.0D;
-            double spawnY = this.getY() + 0.35D;
-            double spawnZ = this.getZ() + 0.3D;
+            double spawnX = this.getX();
+            double spawnY = this.getY() + 0.3D;
+            double spawnZ = this.getZ() + 1.0D;
 
             arrow.setPos(spawnX, spawnY, spawnZ);
 
@@ -200,24 +200,13 @@ public class RenArcher extends SkeletonEntity implements IAnimatable {
             double accuracy = 2.0F;
             arrow.shoot(d0, d1 + d1 * 0.15D, d2, (float) speed, (float) accuracy);
 
-            arrow.shoot(d0, d1 + d1 * 0.1D, d2, (float) speed, 4.0F);
+            //arrow.shoot(d0, d1 + d1 * 0.1D, d2, (float) speed, 4.0F);
             arrow.setBaseDamage(3.0D);
             arrow.setKnockback(2);
 
             arrow.setNoGravity(true);
 
             applyRandomBadEffect(arrow);
-
-            for (int i = 0; i < 10; i++) {
-
-                double xOffset = (random.nextDouble() - 0.5D) * 0.1D;
-                double yOffset = (random.nextDouble() - 0.5D) * 0.1D;
-                double zOffset = (random.nextDouble() - 0.5D) * 0.1D;
-
-                this.level.addParticle(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE,
-                        spawnX + xOffset, spawnY + yOffset, spawnZ + zOffset,
-                        d0 * 0.01D, d1 * 0.01D, d2 * 0.01D);
-            }
 
             this.level.addFreshEntity(arrow);
         }

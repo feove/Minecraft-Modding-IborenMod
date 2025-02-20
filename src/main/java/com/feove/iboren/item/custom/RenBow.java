@@ -21,20 +21,26 @@ public class RenBow extends BowItem {
 
     public RenBow(Properties properties) {
         super(properties);
+
     }
 
     @Override
     public AbstractArrowEntity customArrow(AbstractArrowEntity arrow) {
+
         if (arrow.getOwner() instanceof LivingEntity) {
+
             RenArrow renArrow = new RenArrow(EntityRegistry.REN_ARROW.get(), arrow.level);
-            renArrow.setOwner((LivingEntity) arrow.getOwner());
+            renArrow.setOwner( arrow.getOwner());
             renArrow.setPos(arrow.getX(), arrow.getY(), arrow.getZ());
             renArrow.xRotO = arrow.xRotO;
             renArrow.yRotO = arrow.yRotO;
             return renArrow;
+
         }
         return arrow;
     }
+
+
 
 
     @Override

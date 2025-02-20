@@ -51,11 +51,12 @@ public class EntityRegistry {
 
 
     public static final RegistryObject<EntityType<RenArrow>> REN_ARROW = ENTITY_TYPES.register("ren_arrow",
-            () -> EntityType.Builder.<RenArrow>of(RenArrow::new, EntityClassification.MISC)
-                    .sized(0.5F, 0.5F) // Make sure hitbox is not 0
-                    .clientTrackingRange(4) // Ensure it's visible to clients
-                    .updateInterval(20) // Sync updates properly
+            () -> EntityType.Builder.of((EntityType.IFactory<RenArrow>) (type, world) -> new RenArrow(type, world), EntityClassification.MISC)
+                    .sized(0.5F, 0.5F)
+                    .clientTrackingRange(64)
+                    .updateInterval(1)
                     .build(new ResourceLocation("iboren", "ren_arrow").toString()));
+
 
     public static void register(IEventBus eventBus) {
 

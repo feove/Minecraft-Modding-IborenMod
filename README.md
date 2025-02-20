@@ -28,7 +28,7 @@ but don't hesitate to contact me if you encounter any problems.
 
 To use the Iboren Mod in your Minecraft game:
 
-1. Download the `iborenMod-3.1.jar` file from the [releases section](#).
+1. Download the `iborenMod-3.2.jar` file from the [releases section](#).
 2. Place it in your `mods/` folder within your Minecraft directory.
 3. Launch Minecraft using the Forge profile that matches the mod's version (1.16.5).
 
@@ -40,7 +40,7 @@ To use the Iboren Mod in your Minecraft game:
   
 ### Steps:
 1. Install Minecraft Forge (if not already installed).
-2. Copy the `iborenMod-3.1.jar` to your `mods/` folder.
+2. Copy the `iborenMod-3.2.jar` to your `mods/` folder.
 3. Launch Minecraft!
 
 ## How to Build

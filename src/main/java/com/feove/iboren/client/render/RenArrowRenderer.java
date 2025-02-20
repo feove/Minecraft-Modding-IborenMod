@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenArrowRenderer extends ArrowRenderer<RenArrow> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation("iboren", "textures/entity/projectiles/ren_arrow.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation("iboren", "textures/entity/projectiles/ren_arrow.png");
 
     public RenArrowRenderer(EntityRendererManager renderManager) {
         super(renderManager);

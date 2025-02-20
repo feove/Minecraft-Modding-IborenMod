@@ -11,14 +11,15 @@ import net.minecraft.world.World;
 
 public class RenArrowItem extends ArrowItem {
 
-    public RenArrowItem(Item.Properties properties) {
+    public RenArrowItem(Properties properties) {
         super(properties);
     }
 
     @Override
-    public AbstractArrowEntity createArrow(World world, ItemStack stack, LivingEntity shooter) {
-        RenArrow renArrow = new RenArrow(EntityRegistry.REN_ARROW.get(), world);
-        renArrow.setOwner(shooter);
+    public AbstractArrowEntity createArrow(World world, ItemStack ammoStack, LivingEntity shooter) {
+        RenArrow renArrow = new RenArrow(world, shooter);
         return renArrow;
     }
+
+
 }
