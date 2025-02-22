@@ -4,6 +4,7 @@ import com.feove.iboren.utils.PlayerUtils;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.minecraft.client.entity.player.ClientPlayerEntity;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.Commands;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -12,7 +13,7 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.nbt.StringNBT;
-import net.minecraft.util.text.StringTextComponent;
+
 
 public class IborenCommands {
 
@@ -24,18 +25,15 @@ public class IborenCommands {
 
     private int iboren(CommandContext<CommandSource> context) throws CommandSyntaxException {
         CommandSource source = context.getSource();
-        if (source.getEntity() instanceof ServerPlayerEntity) {
-            ServerPlayerEntity playerEntity = (ServerPlayerEntity) source.getEntity();
 
-            // Create a written book item
+            ClientPlayerEntity playerEntity = (ClientPlayerEntity) source.getEntity();
+
             ItemStack book = new ItemStack(Items.WRITTEN_BOOK);
             CompoundNBT bookData = new CompoundNBT();
             ListNBT pages = new ListNBT();
 
-            // Set book title and author
             bookData.putString("title", "Iboren Guide");
             bookData.putString("author", "Feovee");
-
 
             pages.add(StringNBT.valueOf(
                     "{\"text\":\"§lWelcome to the Iboren Mod!§r\\n\\n" +
@@ -73,7 +71,7 @@ public class IborenCommands {
             } else {
                 PlayerUtils.sendMessage(playerEntity, "⚠️ Inventory full! Could not receive the book.");
             }
-        }
+
         return 1;
     }
 

@@ -27,9 +27,8 @@ public class ModOreGeneration {
                     .decorated(Placement.RANGE.configured(
                             new TopSolidRangeConfig(type.getMinHeight(), type.getMinHeight(), type.getMaxHeight())))
                     .squared()
-                    .count(2); // Count per chunk
+                    .count(2);
 
-            // Add ore feature to generation
             event.getGeneration().addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, oreFeature);
 
         }
