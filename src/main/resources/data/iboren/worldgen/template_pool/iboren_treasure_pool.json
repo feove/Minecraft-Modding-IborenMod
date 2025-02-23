@@ -1,0 +1,14 @@
+{
+  "name": "iboren:structures/iboren_treasure",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "type": "minecraft:single_pool_element",
+        "location": "iboren:structures/iboren_treasure",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

@@ -17,8 +17,7 @@ import java.util.Map;
 public class STConfiguredStructures {
 
 
-    public static StructureFeature<?, ?> CONFIGURED_IBOREN_TREASURE = STStructures.RUN_DOWN_HOUSE.get().configured(IFeatureConfig.NONE);
-
+    public static StructureFeature<?, ?> CONFIGURED_IBOREN_TREASURE = STStructures.IBOREN_TREASURE.get().configured(IFeatureConfig.NONE);
 
 
     public static void registerConfiguredStructures() {
@@ -48,7 +47,7 @@ public class STConfiguredStructures {
                     (Map<Structure<?>, StructureFeature<?, ?>>) structureFeaturesField.get(null);
 
             Map<Structure<?>, StructureFeature<?, ?>> tempMap = new HashMap<>(structureFeatures);
-            tempMap.put(STStructures.RUN_DOWN_HOUSE.get(), CONFIGURED_IBOREN_TREASURE);
+            tempMap.put(STStructures.IBOREN_TREASURE.get(), CONFIGURED_IBOREN_TREASURE);
 
             structureFeaturesField.set(null, ImmutableMap.copyOf(tempMap));
         } catch (Exception e) {

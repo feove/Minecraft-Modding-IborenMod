@@ -1,13 +1,11 @@
     package com.feove.iboren;
 
     import com.feove.iboren.block.ModBlocks;
-    import com.feove.iboren.client.render.CustomCowRenderer;
-    import com.feove.iboren.client.render.RenZombieRenderer;
     import com.feove.iboren.entity.EntityRegistry;
     import com.feove.iboren.item.ModItems;
 
     import com.feove.iboren.world.ModWorldEvents;
-    import jdk.jfr.internal.JVM;
+    import com.feove.iboren.world.STStructures;
     import net.minecraft.block.Block;
     import net.minecraft.block.Blocks;
 
@@ -15,6 +13,9 @@
     import net.minecraft.entity.MobEntity;
     import net.minecraft.entity.passive.AnimalEntity;
     import net.minecraft.world.gen.Heightmap;
+    import net.minecraft.world.gen.feature.structure.Structure;
+    import net.minecraft.world.gen.settings.DimensionStructuresSettings;
+    import net.minecraft.world.gen.settings.StructureSeparationSettings;
     import net.minecraftforge.common.MinecraftForge;
     import net.minecraftforge.event.RegistryEvent;
     import net.minecraftforge.eventbus.api.IEventBus;
@@ -31,6 +32,8 @@
     import org.apache.logging.log4j.Logger;
     import software.bernie.geckolib3.GeckoLib;
 
+    import java.util.HashMap;
+    import java.util.Map;
     import java.util.stream.Collectors;
 
     @Mod(IborenMod.MOD_ID)
@@ -46,12 +49,13 @@
 
             IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+            STStructures.STRUCTURES.register(FMLJavaModLoadingContext.get().getModEventBus());
+
             MinecraftForge.EVENT_BUS.register(ModWorldEvents.class);
 
             ModItems.ITEMS.register(eventBus);
             ModBlocks.BLOCKS.register(eventBus);
             EntityRegistry.ENTITY_TYPES.register(eventBus);
-
 
             eventBus.addListener(this::setup);
             eventBus.addListener(this::enqueueIMC);
@@ -74,6 +78,10 @@
 
                 EntitySpawnPlacementRegistry.register(EntityRegistry.REN_ARCHER.get(),EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
                         Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::checkMobSpawnRules);
+
+                Map<Structure<?>, StructureSeparationSettings> defaults = new HashMap<>(DimensionStructuresSettings.DEFAULTS);
+                defaults.put(STStructures.IBOREN_TREASURE.get(), new StructureSeparationSettings(3, 2, 1234567890));
+                DimensionStructuresSettings.DEFAULTS.putAll(defaults);
 
             });
 
