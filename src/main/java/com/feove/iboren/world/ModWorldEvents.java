@@ -7,7 +7,6 @@ import com.feove.iboren.world.gen.ModOreGeneration;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-import static com.feove.iboren.world.STStructures.IBOREN_TREASURE;
 
 public class ModWorldEvents {
 

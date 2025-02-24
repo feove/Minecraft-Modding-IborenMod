@@ -5,7 +5,7 @@
     import com.feove.iboren.item.ModItems;
 
     import com.feove.iboren.world.ModWorldEvents;
-    import com.feove.iboren.world.STStructures;
+
     import net.minecraft.block.Block;
     import net.minecraft.block.Blocks;
 
@@ -49,7 +49,6 @@
 
             IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-            STStructures.STRUCTURES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
             MinecraftForge.EVENT_BUS.register(ModWorldEvents.class);
 
@@ -79,9 +78,7 @@
                 EntitySpawnPlacementRegistry.register(EntityRegistry.REN_ARCHER.get(),EntitySpawnPlacementRegistry.PlacementType.ON_GROUND,
                         Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::checkMobSpawnRules);
 
-                Map<Structure<?>, StructureSeparationSettings> defaults = new HashMap<>(DimensionStructuresSettings.DEFAULTS);
-                defaults.put(STStructures.IBOREN_TREASURE.get(), new StructureSeparationSettings(3, 2, 1234567890));
-                DimensionStructuresSettings.DEFAULTS.putAll(defaults);
+
 
             });
 
