@@ -1,0 +1,35 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.iboren_escape.idle": {
+			"animation_length": 2.4583,
+			"bones": {
+				"sphere": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, -2.5, 0]
+						},
+						"0.9583": {
+							"vector": [0, 160, 0]
+						},
+						"2.125": {
+							"vector": [0, 360, 0]
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, -1, 0]
+						},
+						"0.9583": {
+							"vector": [0, 3, 0]
+						},
+						"2.125": {
+							"vector": [0, -1, 0]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}
